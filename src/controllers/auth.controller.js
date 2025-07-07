@@ -1,16 +1,15 @@
 const passport = require("passport")
 
-function authenticateGoogle(){
-    passport.authenticate('google',{
+const authenticateGoogle= passport.authenticate('google',{
         scope: ['email','profile']
     });
-}
-function callbackGoogle(){
-    passport.authenticate('google',{
+
+const callbackGoogle= passport.authenticate('google',{
         successRedirect:'/',
         failureRedirect:'/login/failed',
-    })
-}
+        session:false,
+    });
+
 //TODO:
 // function authenticateFacebook(){
 //         passport.authenticate('facebook',{
