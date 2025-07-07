@@ -5,21 +5,25 @@ const authenticateGoogle= passport.authenticate('google',{
     });
 
 const callbackGoogle= passport.authenticate('google',{
-        successRedirect:'/',
+        successRedirect:'/v1',
         failureRedirect:'/login/failed',
         session:false,
     });
 
 //TODO:
-// function authenticateFacebook(){
-//         passport.authenticate('facebook',{
-//             scope:[''],
-//         })
-// }
-// function callbackFacebook(){
+const authenticateFacebook=
+        passport.authenticate('facebook',{
+            scope:['email','public_profile'],
+        })
 
-// }
+const callbackFacebook=passport.authenticate('google',{
+        successRedirect:'/v1',
+        failureRedirect:'/login/failed',
+        session:false,
+    });
 
 module.exports={authenticateGoogle,
     callbackGoogle,
+    authenticateFacebook,
+    authenticateGoogle,callbackFacebook
 }
