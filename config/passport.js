@@ -7,12 +7,12 @@ const GOOGLE_AUTH_OPTIONS={
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 };
-//TODO:
+
 const FACEBOOK_AUTH_OPTIONS={
     callbackURL:'/v1/auth/facebook/callback',
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    profileFields: ['id', 'displayName', 'emails']
+    profileFields: ['id', 'displayName', 'emails', 'name', 'gender', 'photos'],
 };
 
 function verifyCallback(accessToken,refreshToken,profile,done){
@@ -22,5 +22,4 @@ function verifyCallback(accessToken,refreshToken,profile,done){
 
 
 passport.use(new googleStrategy(GOOGLE_AUTH_OPTIONS, verifyCallback));
-// TODO: 
 passport.use(new facebookStrategy(FACEBOOK_AUTH_OPTIONS, verifyCallback));

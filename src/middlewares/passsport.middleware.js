@@ -10,7 +10,6 @@ const callbackGoogle= passport.authenticate('google',{
         session:false,
     });
 
-//TODO:
 const authenticateFacebook=
         passport.authenticate('facebook',{
             scope:['email','public_profile'],
