@@ -9,9 +9,9 @@ const GOOGLE_AUTH_OPTIONS={
 };
 //TODO:
 const FACEBOOK_AUTH_OPTIONS={
-    callbackURL:'/auth/google/callback',
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL:'/v1/auth/facebook/callback',
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     profileFields: ['id', 'displayName', 'emails']
 };
 

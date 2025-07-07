@@ -16,7 +16,7 @@ const authenticateFacebook=
             scope:['email','public_profile'],
         })
 
-const callbackFacebook=passport.authenticate('google',{
+const callbackFacebook=passport.authenticate('facebook',{
         successRedirect:'/v1',
         failureRedirect:'/login/failed',
         session:false,
