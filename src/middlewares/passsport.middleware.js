@@ -5,7 +5,6 @@ const authenticateGoogle= passport.authenticate('google',{
     });
 
 const callbackGoogle= passport.authenticate('google',{
-        successRedirect:'/v1',
         failureRedirect:'/login/failed',
         session:false,
     });
@@ -16,7 +15,6 @@ const authenticateFacebook=
         })
 
 const callbackFacebook=passport.authenticate('facebook',{
-        successRedirect:'/v1',
         failureRedirect:'/login/failed',
         session:false,
     });

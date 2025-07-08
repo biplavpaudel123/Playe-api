@@ -11,6 +11,7 @@ mongoose.connection.on('error',(err)=>{
 
 async function connectMongoDB(){
     await mongoose.connect(MONGO_URI);
+    
 };
 
 module.exports= connectMongoDB;

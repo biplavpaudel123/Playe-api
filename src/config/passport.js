@@ -1,4 +1,5 @@
 const passport= require('passport');
+const verifyCallback= require('../services/auth/verifyCallback');
 const facebookStrategy = require('passport-facebook').Strategy;
 const googleStrategy = require('passport-google-oauth20').Strategy;
 
@@ -14,11 +15,6 @@ const FACEBOOK_AUTH_OPTIONS={
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     profileFields: ['id', 'displayName', 'emails', 'name', 'gender', 'photos'],
 };
-
-function verifyCallback(accessToken,refreshToken,profile,done){
-    console.log(profile);
-    done(null,profile);
-}
 
 
 passport.use(new googleStrategy(GOOGLE_AUTH_OPTIONS, verifyCallback));
