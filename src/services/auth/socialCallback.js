@@ -1,10 +1,12 @@
-const { formatSocialUser } = require("../../utils/formatSocialUser.util");
-const {saveUser}= require('../user.service');
+const { formatSocialUser } = require("../../utils/formatUser.util");
+const {saveUser, findUser}= require('../user.service');
 
 async function socialCallback(accessToken,refreshToken,profile,done){
     // console.log(profile);
     const formattedUser= formatSocialUser(profile);
-    await saveUser(formattedUser);
+    if (!findUser(formattedUser)){
+        await saveUser(formattedUser);
+    }
     done(null,formattedUser);
 }
 module.exports=socialCallback

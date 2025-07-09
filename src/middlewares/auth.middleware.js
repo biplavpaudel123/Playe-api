@@ -16,4 +16,5 @@ function tokenCheckerForAuthRoutes(req, res, next) {
 }
 
 
+
 module.exports = { tokenCheckerForAuthRoutes }
