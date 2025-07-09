@@ -1,5 +1,5 @@
 const passport= require('passport');
-const verifyCallback= require('../services/auth/verifyCallback');
+const socialCallback= require('../services/auth/socialCallback');
 const facebookStrategy = require('passport-facebook').Strategy;
 const googleStrategy = require('passport-google-oauth20').Strategy;
 
@@ -17,5 +17,5 @@ const FACEBOOK_AUTH_OPTIONS={
 };
 
 
-passport.use(new googleStrategy(GOOGLE_AUTH_OPTIONS, verifyCallback));
-passport.use(new facebookStrategy(FACEBOOK_AUTH_OPTIONS, verifyCallback));
+passport.use(new googleStrategy(GOOGLE_AUTH_OPTIONS, socialCallback));
+passport.use(new facebookStrategy(FACEBOOK_AUTH_OPTIONS, socialCallback));

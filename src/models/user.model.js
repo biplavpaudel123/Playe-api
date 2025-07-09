@@ -1,22 +1,31 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    email:{
+    name: {
         type: String,
         required: true,
     },
-    name:{
+    provider: {
         type: String,
         required: true,
+        enum: ['google', 'facebook', 'local'] //only one of 3 providers
     },
-    loginMethod:{
+    email: {
         type: String,
-        required: true
+        required: function () {
+            return this.provider === 'local' || this.provider === 'google'
+        },
     },
-    password:{
+    password: {
         type: String,
-        required: false,
+        required: function () {
+            return this.provider === 'local' //true only for local provider
+        }
+    },
+    userID: {
+        type: Number,
+        required: true,
     }
-}) 
+})
 
-modules.exports= mongoose.Model('user',userSchema);
+module.exports = mongoose.model('user', userSchema);
