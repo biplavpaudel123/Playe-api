@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const { hashPassword } = require('../utils/userUtils/hashPassword.util');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -29,14 +30,9 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-userSchema.pre('save',async function (next) {
-    if (this.provider=='local') next();
-    if (this.isModified('password')) next();
-    const salt = await bcrypt.genSalt(10);
-    this.password= await bcrypt.hash(this.password,salt);
-    
-    next();
-})
+userSchema.pre('findOneAndUpdate',hashPassword);
+userSchema.pre('save',hashPassword);
+userSchema.pre('updateOne',hashPassword);
 
 userSchema.methods.comparePassword= function (inputPassword){
     return bcrypt.compare(inputPassword,this.password);
